@@ -6,9 +6,7 @@
 
 ---
 
-## Index
-
-### Algorithms
+## Algorithms
 
 1. 재귀
 2. 검색 알고리즘
