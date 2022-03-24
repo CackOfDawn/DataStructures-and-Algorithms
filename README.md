@@ -8,7 +8,7 @@
 
 ## Index
 
-$$Algorithms$$
+### Algorithms
 
 1. 재귀
 2. 검색 알고리즘
@@ -21,7 +21,7 @@ $$Algorithms$$
 9. 다익스트라 알고리즘
 10. 동적 프로그래밍
 
-$$DataStructures$$
+## DataStructures
 
 1. 단일 연결 리스트
 2. 이중 연결 리스트
