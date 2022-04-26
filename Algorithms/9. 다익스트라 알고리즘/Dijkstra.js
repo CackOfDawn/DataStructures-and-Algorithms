@@ -84,7 +84,7 @@ class WeightedGraph {
     const previous = {};
     const path = []; //to return at end
     let smallest;
-    //build up initial state
+    //초기값 설정
     for (const vertex in this.adjacencyList) {
       if (vertex === start) {
         distances[vertex] = 0;
@@ -95,12 +95,13 @@ class WeightedGraph {
       }
       previous[vertex] = null;
     }
-    // as long as there is something to visit
+    // 방문할 것이 남아있는 한.
     while (nodes.values.length) {
+      // 가장 낮은 우선순위(거리)의 값을 가진 정점을 준다.
       smallest = nodes.dequeue().val;
+      // 끝점과 같나? 그럼 끝
       if (smallest === finish) {
-        //WE ARE DONE
-        //BUILD UP PATH TO RETURN AT END
+        // 끝점까지의 경로
         while (previous[smallest]) {
           path.push(smallest);
           smallest = previous[smallest];
@@ -109,17 +110,17 @@ class WeightedGraph {
       }
       if (smallest || distances[smallest] !== Infinity) {
         for (const neighbor in this.adjacencyList[smallest]) {
-          //find neighboring node
+          // 인접점 찾기
           const nextNode = this.adjacencyList[smallest][neighbor];
-          //calculate new distance to neighboring node
+          //인접점의 가중치와 현재의 점의 거리를 더한다.
           const candidate = distances[smallest] + nextNode.weight;
           const nextNeighbor = nextNode.node;
           if (candidate < distances[nextNeighbor]) {
-            //updating new smallest distance to neighbor
+            //인접점 까지의 가장 짧은 거리를 업데이트 한다.
             distances[nextNeighbor] = candidate;
-            //updating previous - How we got to neighbor
+            //previous 도 업데이트 한다.
             previous[nextNeighbor] = smallest;
-            //enqueue in priority queue with new priority
+            //업데이트 된 거리를 우선순위 큐에 넣어 값을 업데이트 한다.
             nodes.enqueue(nextNeighbor, candidate);
           }
         }
